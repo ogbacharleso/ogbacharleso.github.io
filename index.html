@@ -3,37 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charles Ogba | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Charles Ogba | Maintenance Engineer & Data Analyst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d9ff;
+            --secondary: #ff6b35;
+            --dark: #0a0e27;
+            --dark-alt: #151932;
+            --light: #e8f4f8;
+            --accent: #7c3aed;
+            --grid: #1a1f3a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background grid */
+        .background-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: gridScroll 20s linear infinite;
+        }
+        
+        @keyframes gridScroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+        
+        .glow-orb {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .orb-1 { background: var(--primary); top: -250px; right: -250px; animation: float 8s ease-in-out infinite; }
+        .orb-2 { background: var(--secondary); bottom: -250px; left: -250px; animation: float 10s ease-in-out infinite reverse; }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, 50px); }
+        }
+        
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+        
+        .logo {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav { display: flex; gap: 2rem; }
+        nav a { color: var(--light); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        nav a:hover { color: var(--primary); }
+        
+        .hero { padding: 8rem 5% 6rem; max-width: 1200px; margin: 0 auto; }
+        .hero-tag { display: inline-block; padding: 0.5rem 1.2rem; background: rgba(0, 217, 255, 0.1); border: 1px solid var(--primary); border-radius: 30px; color: var(--primary); font-size: 0.85rem; margin-bottom: 1.5rem; }
+        
+        h1 { font-family: 'Rajdhani', sans-serif; font-size: 4rem; font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+        
+        .dual-expertise { display: flex; gap: 2rem; margin-top: 3rem; }
+        .expertise-card { flex: 1; padding: 2rem; background: var(--dark-alt); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 12px; transition: transform 0.3s; }
+        .expertise-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        
+        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-family: 'Rajdhani', sans-serif; font-size: 2.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--primary); display: inline-block; }
+        
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .project-card { background: var(--dark-alt); padding: 2rem; border-radius: 12px; border: 1px solid rgba(0, 217, 255, 0.1); }
+        
+        .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .skill-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin: 10px 0 20px; overflow: hidden; }
+        .skill-progress { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); width: 0; transition: width 1.5s ease-in-out; }
+
+        .contact-link { display: block; padding: 1rem; margin-bottom: 1rem; background: var(--dark-alt); border: 1px solid var(--primary); color: white; text-decoration: none; border-radius: 8px; text-align: center; }
+        .contact-link:hover { background: var(--primary); color: var(--dark); }
+
+        footer { text-align: center; padding: 4rem; border-top: 1px solid var(--grid); margin-top: 4rem; }
+
+        @media (max-width: 768px) {
+            .dual-expertise, .skills-container { grid-template-columns: 1fr; flex-direction: column; }
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">Charles Ogba</div>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <header id="about">
-        <h1>Hi, I'm Charles.</h1>
-        <p>A [Your Role, e.g., Software Developer] focused on building impactful solutions.</p>
+    <div class="background-grid"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    
+    <header>
+        <div class="logo">CHARLES OGBA</div>
+        <nav>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
+    
+    <section class="hero">
+        <span class="hero-tag">ENGINEERING × DATA SCIENCE</span>
+        <h1>Bridging Precision Engineering with Data-Driven Insights.</h1>
+        <p style="font-size: 1.2rem; opacity: 0.8; max-width: 700px;">
+            Experienced Maintenance Engineer and Data Analyst specializing in optimizing industrial systems through technical expertise and predictive analytics.
+        </p>
+        
+        <div class="dual-expertise">
+            <div class="expertise-card">
+                <h3>⚙️ Maintenance Engineering</h3>
+                <p>Preventive maintenance, system optimization, and equipment reliability.</p>
+            </div>
+            <div class="expertise-card">
+                <h3>📊 Data Analytics</h3>
+                <p>Predictive modeling, SQL, and data visualization to drive decisions.</p>
+            </div>
+        </div>
+    </section>
 
-    <section id="work">
-        <h2>Selected Works</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Project Title</h3>
-                <p>A brief description of the problem you solved and the tech used.</p>
-                <a href="https://github.com/ogbacharleso/project-link" class="btn">View Project</a>
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Predictive Maintenance</h3>
+                <p>Used Python to analyze sensor data, reducing unplanned downtime by 45%.</p>
             </div>
+            <div class="project-card">
+                <h3>Performance Dashboard</h3>
+                <p>Interactive Power BI dashboard for real-time equipment monitoring.</p>
             </div>
+            <div class="project-card">
+                <h3>Cost Analysis</h3>
+                <p>Statistical analysis identifying $200k+ in annual operational savings.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Expertise</h2>
+        <div class="skills-container">
+            <div>
+                <h4>Maintenance Engineering</h4>
+                <p>Troubleshooting</p><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                <p>Safety Compliance</p><div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+            </div>
+            <div>
+                <h4>Data Science</h4>
+                <p>Python / SQL</p><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                <p>Machine Learning</p><div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div style="max-width: 500px; margin: 0 auto;">
+            <a href="mailto:your-email@example.com" class="contact-link">✉️ Email Me</a>
+            <a href="https://linkedin.com/in/ogbacharleso" class="contact-link">💼 LinkedIn</a>
+            <a href="https://github.com/ogbacharleso" class="contact-link">💻 GitHub</a>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Charles Ogba. Built with GitHub Pages.</p>
+        <p>&copy; 2026 Charles Ogba. Engineering Excellence × Data Intelligence.</p>
     </footer>
+
+    <script>
+        // Trigger skill bar animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.dataset.width || entry.target.style.width;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.skill-progress').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
